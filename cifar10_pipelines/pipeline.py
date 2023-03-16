@@ -58,13 +58,6 @@ def step_three(X_train, y_train, X_test, Y_test):
 
     return val_acc
 
-@PipelineDecorator.component(return_values=['accuracy'], cache=True, task_type=TaskTypes.qc)
-def step_four(model, X_data, Y_data):
-
-    val_loss, val_acc = model.evaluate(X_data, Y_data)
-
-    return val_acc
-
 @PipelineDecorator.pipeline(name='pipeline', project='examples', version='0.1')
 def main():
     X_train, X_test, y_train, y_test  = step_one()

@@ -11,15 +11,13 @@ def step_one():
 
     return X_train, X_test, y_train, y_test
 
-@PipelineDecorator.component(
-  return_values=['X_train'], cache=True, task_type=TaskTypes.data_processing)
+@PipelineDecorator.component(return_values=['X_train'], cache=True, task_type=TaskTypes.data_processing)
 def step_two_1(X_train):
     import tensorflow as tf
     
     return tf.keras.utils.normalize(X_train, axis=1)
 
-@PipelineDecorator.component(
-  return_values=['X_test'], cache=True, task_type=TaskTypes.data_processing)
+@PipelineDecorator.component(return_values=['X_test'], cache=True, task_type=TaskTypes.data_processing)
 def step_two_2(X_test):
     import tensorflow as tf
     

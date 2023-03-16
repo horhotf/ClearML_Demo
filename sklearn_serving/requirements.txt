@@ -1,2 +1,0 @@
-clearml >= 1.1.6
-scikit-learn
